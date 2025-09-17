@@ -4,18 +4,22 @@ GREEN="\e[32m"
 RED="\e[31m"
 YELLOW="\e[33m"
 NC="\e[0m" # Reset
+
 THRESHOLD=10  # ms threshold
 INTERVAL=5     # default
 TARGET=""
 
 # Parse options
-while getopts "i:" opt; do
+while getopts "i:t:" opt; do
     case $opt in
         i)
             INTERVAL=$OPTARG
             ;;
+        t)
+            THRESHOLD=$OPTARG
+            ;;
         *)
-            echo "Usage: $0 [-i interval] target"
+            echo "Usage: $0 [-i interval] [-t threshold] target"
             exit 1
             ;;
     esac
@@ -24,7 +28,7 @@ shift $((OPTIND -1))
 TARGET="$1"
 
 if [[ -z "$TARGET" ]]; then
-    echo "Usage: $0 [-i interval] target"
+    echo "Usage: $0 [-i interval] [-t threshold] target"
     exit 1
 fi
 
