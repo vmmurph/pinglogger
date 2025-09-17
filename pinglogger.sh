@@ -1,4 +1,8 @@
 #!/bin/bash
+GREEN="\e[32m"
+RED="\e[31m"
+NC="\e[0m" # No Color (reset)
+
 TARGET="$1"
 INTERVAL=5
 LINE=""
@@ -16,9 +20,9 @@ while true; do
     fi
     ping -c 1 -W 2 "$TARGET" > /dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        printf "."; LINE="${LINE}."
+        printf "${GREEN}.${NC}"; LINE="${LINE}."
     else
-        printf "x"; LINE="${LINE}x"
+        printf "${RED}x${NC}"; LINE="${LINE}x"
     fi
     LAST_HOUR="$HOUR"
     sleep $INTERVAL
