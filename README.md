@@ -3,7 +3,7 @@
 A simple, colored ping logging tool for Linux terminals.
 Monitors the connectivity and latency to a target host, displaying results in real-time using colored ASCII symbols and saving them to per-host log files.
 
-**Features**
+## Features
 
 Colored output: blue dot (.), orange colon (:), and red x, corresponding to fast, slow, and failed pings.
 
@@ -13,7 +13,7 @@ Per-host logs: Each target gets its own log file for persistent history.
 
 ---
 
-**Usage**
+## Usage
 
 bash
 pinglogger [-i interval] [-t threshold] target
@@ -23,7 +23,7 @@ target: Hostname or IP to ping (required).
 
 -t threshold: Latency threshold in milliseconds for "slow" pings (optional, default is 10).
 
-**Examples**
+## Examples
 
 Ping google.com with default settings:
 
@@ -46,7 +46,7 @@ x Red: Ping failed/lost
 
 ---
 
-**Log Files**
+## Log Files
 
 Each target host gets a log file named <target>.log (e.g., google_com.log).
 
@@ -54,7 +54,7 @@ On script startup, some of the last lines of that log (if it has been run before
 
 ---
 
-**Installation**
+## Installation
 
 Place pinglogger.sh anywhere (e.g., ~/projects/pinglogger/).
 
@@ -72,7 +72,7 @@ alias pinglogger="~/projects/pinglogger/pinglogger.sh"
 
 ---
 
-**Requirements**
+## Requirements
 
 Bash (Tested on Linux)
 
