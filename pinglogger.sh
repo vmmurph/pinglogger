@@ -30,6 +30,7 @@ done
 shift $((OPTIND -1))
 TARGET="$1"
 
+# find the log file (or it will be created)
 LOGTARGET=$(echo "$TARGET" | sed 's/[^a-zA-Z0-9]/_/g')
 LOGFILE="${LOGTARGET}.log"
 
@@ -38,6 +39,14 @@ if [[ -z "$TARGET" ]]; then
     exit 1
 fi
 
+# show prior history
+SHOW_LINES=10  # Set this to the number of lines you want to show
+if [[ -f "$LOGFILE" ]]; then
+    tail -n "$SHOW_LINES" "$LOGFILE"
+    echo
+fi
+
+# print timestamp
 LAST_HOUR=$(date "+%Y-%m-%d %I%p")
 START_TS=$(date "+%Y-%m-%d %I:%M%p")
 echo -e "${LIGHTBLUE}$START_TS:${NC}" # print to terminal
