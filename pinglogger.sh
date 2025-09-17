@@ -1,8 +1,9 @@
 #!/bin/bash
 
-GREEN="\e[32m"
-RED="\e[31m"
-YELLOW="\e[33m"
+GREEN="\e[38;2;0;255;0m"
+YELLOW="\e[38;2;255;255;0m"
+RED="\e[38;2;255;0;0m"
+BLUE="\e[38;2;173;216;230m"
 NC="\e[0m" # Reset
 
 THRESHOLD=10  # ms threshold
@@ -34,7 +35,7 @@ fi
 
 LAST_HOUR=$(date "+%Y-%m-%d %I%p")
 START_TS=$(date "+%Y-%m-%d %I:%M%p")
-echo "$START_TS:"
+echo -e "${BLUE}$START_TS:${NC}"
 
 while true; do
     HOUR=$(date "+%Y-%m-%d %I%p")
