@@ -11,6 +11,7 @@ NC="\e[0m" # Reset
 THRESHOLD=10  # ms threshold
 INTERVAL=5     # default
 TARGET=""
+HISTORY_LINES=100  # set this to the number of lines of history to show from the logs
 
 # Parse options
 while getopts "i:t:" opt; do
@@ -40,18 +41,17 @@ if [[ -z "$TARGET" ]]; then
 fi
 
 # show prior history
-SHOW_LINES=10  # Set this to the number of lines you want to show
 if [[ -f "$LOGFILE" ]]; then
-    tail -n "$SHOW_LINES" "$LOGFILE"
+    tail -n "$HISTORY_LINES" "$LOGFILE"
     echo
 fi
 
 # print timestamp
 LAST_HOUR=$(date "+%Y-%m-%d %I%p")
 START_TS=$(date "+%Y-%m-%d %I:%M%p")
-echo -e "${LIGHTBLUE}$START_TS:${NC}" # print to terminal
+echo -e "${LIGHTBLUE}$START_TS: target=$TARGET, threshold=${THRESHOLD}ms, interval=${INTERVAL}s${NC}"
 printf "\n" >> "$LOGFILE"
-echo "$START_TS:" >> "$LOGFILE" # print to log
+echo "$START_TS: target=$TARGET, threshold=${THRESHOLD}ms, interval=${INTERVAL}s" >> "$LOGFILE"
 
 while true; do
     HOUR=$(date "+%Y-%m-%d %I%p")
