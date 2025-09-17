@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# colors
 BLUE="\e[32m"
 ORANGE="\e[33m"
 GREEN="\e[38;2;0;255;0m"
@@ -8,6 +9,7 @@ RED="\e[38;2;255;0;0m"
 LIGHTBLUE="\e[38;2;173;216;230m"
 NC="\e[0m" # Reset
 
+# options
 THRESHOLD=10  # ms threshold
 INTERVAL=5     # default
 TARGET=""
@@ -32,8 +34,9 @@ shift $((OPTIND -1))
 TARGET="$1"
 
 # find the log file (or it will be created)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOGTARGET=$(echo "$TARGET" | sed 's/[^a-zA-Z0-9]/_/g')
-LOGFILE="${LOGTARGET}.log"
+LOGFILE="${SCRIPT_DIR}/${LOGTARGET}.log"
 
 if [[ -z "$TARGET" ]]; then
     echo "Usage: $0 [-i interval] [-t threshold] target"

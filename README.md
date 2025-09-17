@@ -5,7 +5,7 @@ Monitors the connectivity and latency to a target host, displaying results in re
 
 ## Features
 
-Colored output: blue dot (.), orange colon (:), and red x, corresponding to fast, slow, and failed pings.
+Colored output: green dot (.), yellow colon (:), and red x, corresponding to fast, slow, and failed pings. From testing, the colors seem to look different depending on terminal settings. 
 
 Configurable: Set the ping interval and latency threshold via flags.
 
