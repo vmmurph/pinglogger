@@ -77,3 +77,9 @@ alias pinglogger="~/projects/pinglogger/pinglogger.sh"
 Bash (Tested on Linux)
 
 Standard tools: ping, awk, sed, tail
+
+---
+
+## License
+
+MIT License (see LICENSE file for details)
